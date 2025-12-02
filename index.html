@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hachico's Udemy Courses & Books | ハチコのUdemyコース・書籍</title>
+    <meta name="description" content="Udemy講師ハチコ(Hachico)の公式ページ。Udemyコースと書籍で、AIや業務効率化など、あなたの学習をサポートします。">
+
+    <!-- OGP Settings -->
+    <meta property="og:title" content="Hachico's Udemy Courses & Books | ハチコのUdemyコース・書籍">
+    <meta property="og:description"
+        content="Udemy講師ハチコ(Hachico)の公式ページ。Udemyコースと書籍で、AIや業務効率化など、あなたの学習をサポートします。">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://hachico-udemy.github.io/">
+    <meta property="og:image" content="https://placehold.jp/1200x630.png">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            /* Cosmic Theme */
+            --bg-deep: #050511;
+            --bg-gradient-start: #0f0c29;
+            --bg-gradient-mid: #302b63;
+            --bg-gradient-end: #24243e;
+
+            --text-primary: #ffffff;
+            --text-secondary: #b3b3b3;
+
+            --accent-cyan: #00f2ff;
+            --accent-purple: #bd00ff;
+            --accent-glow: rgba(0, 242, 255, 0.5);
+
+            --card-bg: rgba(20, 20, 35, 0.7);
+            --card-border: rgba(255, 255, 255, 0.1);
+
+            --font-main: 'Noto Sans JP', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-deep);
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Canvas Background */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            /* Deep cosmic gradient overlay */
+            background: radial-gradient(circle at 50% 0%, #1a1a40 0%, #050511 70%);
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 8rem 0 6rem;
+            text-align: left;
+            /* Align left for modern feel */
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .brand-subtitle {
+            font-size: 0.9rem;
+            color: var(--accent-cyan);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            display: block;
+            font-weight: 700;
+            text-shadow: 0 0 10px var(--accent-glow);
+        }
+
+        .brand-title {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            background: linear-gradient(135deg, #fff 0%, #a5f3fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.02em;
+        }
+
+        .welcome-text {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .welcome-text strong {
+            color: #fff;
+            font-weight: 700;
+        }
+
+        .info-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .info-list li {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .info-list li::before {
+            content: '>';
+            position: absolute;
+            left: 0;
+            color: var(--accent-cyan);
+            font-weight: 700;
+        }
+
+        /* Section Header */
+        .section-header {
+            margin-bottom: 3rem;
+            padding-top: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #fff 0%, #a5f3fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-subtitle {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Grid */
+        .coupon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2.5rem;
+            padding-bottom: 2rem;
+        }
+
+        #books-container {
+            padding-bottom: 8rem;
+        }
+
+        /* Kindle Books Card Specific */
+        #books-container .card-image-wrapper {
+            padding-top: 150%;
+        }
+
+        #books-container .price-area {
+            display: none;
+        }
+
+        /* Card */
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s;
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: rgba(0, 242, 255, 0.6);
+            box-shadow: 
+                0 0 20px rgba(0, 242, 255, 0.4),
+                0 0 40px rgba(0, 242, 255, 0.3),
+                0 0 60px rgba(0, 242, 255, 0.2),
+                0 0 80px rgba(0, 242, 255, 0.1),
+                0 20px 40px -10px rgba(0, 0, 0, 0.5),
+                inset 0 0 30px rgba(0, 242, 255, 0.05);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+            background: linear-gradient(135deg, rgba(0, 242, 255, 0.1) 0%, rgba(189, 0, 255, 0.05) 50%, transparent 100%);
+        }
+
+        .card-image-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%;
+            overflow: hidden;
+        }
+
+        .card-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .card:hover .card-image {
+            transform: scale(1.08);
+            filter: brightness(1.1) saturate(1.2);
+        }
+
+        .card:hover .card-image-wrapper::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, 
+                transparent 0%, 
+                rgba(0, 242, 255, 0.1) 100%);
+            pointer-events: none;
+        }
+
+        .card-content {
+            padding: 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            min-height: 6em;
+        }
+
+        .price-area {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .current-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent-cyan);
+            text-shadow: 0 0 15px rgba(0, 242, 255, 0.3);
+        }
+
+        .original-price {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            text-decoration: line-through;
+        }
+
+        /* Coupon Code */
+        .coupon-box {
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px dashed rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .coupon-box:hover {
+            background: rgba(0, 242, 255, 0.08);
+            border-color: var(--accent-cyan);
+            box-shadow: 
+                0 0 10px rgba(0, 242, 255, 0.3),
+                0 0 20px rgba(0, 242, 255, 0.2),
+                inset 0 0 15px rgba(0, 242, 255, 0.05);
+        }
+
+        .coupon-box:hover .coupon-code {
+            text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
+        }
+
+        .coupon-label {
+            display: block;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.4rem;
+            letter-spacing: 0.1em;
+        }
+
+        .coupon-code {
+            font-family: 'SF Mono', monospace;
+            font-size: 1.1rem;
+            color: #fff;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+        }
+
+        .copy-feedback {
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: var(--accent-cyan);
+            color: #000;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            pointer-events: none;
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .copy-feedback.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* Button */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 1.2rem;
+            background: linear-gradient(90deg, var(--accent-cyan), #00aaff);
+            color: #000;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, #00aaff, var(--accent-cyan));
+            opacity: 0;
+            z-index: -1;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 0 15px rgba(0, 242, 255, 0.6),
+                0 0 30px rgba(0, 242, 255, 0.4),
+                0 0 45px rgba(0, 242, 255, 0.3);
+        }
+
+        .btn:hover::before {
+            opacity: 1;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 4rem 0;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-top: auto;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-link {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        .footer-link:hover {
+            color: var(--accent-cyan);
+            text-shadow: 
+                0 0 10px rgba(0, 242, 255, 0.6),
+                0 0 20px rgba(0, 242, 255, 0.3);
+            box-shadow: 
+                0 0 15px rgba(0, 242, 255, 0.3),
+                0 0 25px rgba(0, 242, 255, 0.2),
+                inset 0 0 10px rgba(0, 242, 255, 0.05);
+        }
+
+        @media (max-width: 768px) {
+            .brand-title {
+                font-size: 2.5rem;
+            }
+
+            .hero {
+                padding: 6rem 0 4rem;
+                text-align: center;
+            }
+
+            .hero-content {
+                margin: 0 auto;
+            }
+
+            .info-list {
+                align-items: center;
+            }
+
+            .coupon-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <canvas id="bg-canvas"></canvas>
+
+    <header class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="brand-subtitle">OFFICIAL SITE</span>
+                <h1 class="brand-title">Hachico's Udemy<br>Courses & Books</h1>
+
+                <div class="welcome-text">
+                    <p>
+                        ハチコのUdemyコースを<strong>特別価格</strong>で受講できます。<br>
+                        開発スキルから業務効率化まで、あなたの学習をサポートします。
+                    </p>
+                </div>
+
+                <ul class="info-list">
+                    <li>リンクを開いてもクーポンが適用されない場合は、クーポンコードをご利用ください</li>
+                    <li>クーポンの期限が切れている場合は、Xなどでお知らせくださいね</li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <!-- Udemy Coupons Section -->
+            <div class="section-header">
+                <h2>Udemy Courses</h2>
+            </div>
+            <div id="coupon-container" class="coupon-grid">
+                <!-- JS Injection -->
+            </div>
+
+            <!-- Kindle Books Section -->
+            <div class="section-header">
+                <h2>Kindle Books</h2>
+                <p class="section-subtitle">Kindle Unlimitedで0円で読めます</p>
+            </div>
+            <div id="books-container" class="coupon-grid">
+                <!-- JS Injection -->
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="https://x.com/ha_chi_co_3" target="_blank" class="footer-link">Twitter / X</a>
+                <a href="https://mag.hachico-ai.com/newsletter-sign-up" target="_blank" class="footer-link">Newsletter</a>
+            </div>
+            <p>&copy; 2025 Hachico. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // ==========================================
+        //  CANVAS ANIMATION (Glowing Orbs)
+        // ==========================================
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let orbs = [];
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        class Orb {
+            constructor() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.vx = (Math.random() - 0.5) * 0.2; // Slightly faster
+                this.vy = (Math.random() - 0.5) * 0.2;
+                this.size = Math.random() * 80 + 40; // Larger size: 40-120px
+                this.alpha = Math.random() * 0.4 + 0.2; // Brighter
+                this.targetAlpha = Math.random() * 0.4 + 0.2;
+                this.color = Math.random() > 0.5 ? '0, 242, 255' : '189, 0, 255'; // Cyan or Purple
+                this.pulseSpeed = Math.random() * 0.03 + 0.01;
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+
+                // Wrap around screen
+                if (this.x < -this.size) this.x = width + this.size;
+                if (this.x > width + this.size) this.x = -this.size;
+                if (this.y < -this.size) this.y = height + this.size;
+                if (this.y > height + this.size) this.y = -this.size;
+
+                // Smooth pulsing effect
+                if (Math.abs(this.alpha - this.targetAlpha) < 0.01) {
+                    this.targetAlpha = Math.random() * 0.4 + 0.2;
+                }
+                this.alpha += (this.targetAlpha - this.alpha) * this.pulseSpeed;
+            }
+
+            draw() {
+                // Create radial gradient for glow effect
+                const gradient = ctx.createRadialGradient(
+                    this.x, this.y, 0,
+                    this.x, this.y, this.size
+                );
+                gradient.addColorStop(0, `rgba(${this.color}, ${this.alpha})`);
+                gradient.addColorStop(0.4, `rgba(${this.color}, ${this.alpha * 0.4})`);
+                gradient.addColorStop(1, `rgba(${this.color}, 0)`);
+
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = gradient;
+                ctx.fill();
+            }
+        }
+
+        function initAnimation() {
+            orbs = [];
+            const count = Math.min(Math.floor(width / 150), 20); // More orbs
+            for (let i = 0; i < count; i++) {
+                orbs.push(new Orb());
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            ctx.globalCompositeOperation = 'screen'; // Additive blending for glow
+
+            orbs.forEach(orb => {
+                orb.update();
+                orb.draw();
+            });
+
+            ctx.globalCompositeOperation = 'source-over'; // Reset blend mode
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', () => {
+            resize();
+            initAnimation();
+        });
+
+        resize();
+        initAnimation();
+        animate();
+
+
+        // ==========================================
+        //  COUPON DATA
+        // ==========================================
+        const coupons = [
+            {
+                id: 6,
+                title: "ClaspとCodex CLIで始めるGASプログラミング入門｜ローカル環境で快適に開発しよう【初心者歓迎】",
+                image: "https://img-c.udemycdn.com/course/480x270/6909291_b3a3_3.jpg",
+                price: "1,300円",
+                originalPrice: "9,800円",
+                code: "M202512",
+                link: "https://www.udemy.com/course/clasp-gas/"
+            },
+            {
+                id: 5,
+                title: "【ClaudeでGASプログラミング】Google Apps Scriptで明日の予定をLINEに通知しよう",
+                image: "https://img-c.udemycdn.com/course/480x270/6505779_30af_2.jpg",
+                price: "1,300円",
+                originalPrice: "19,800円",
+                code: "M202512",
+                link: "https://www.udemy.com/course/claude-gas-line/"
+            },
+            {
+                id: 3,
+                title: "AI×思考整理で仕事が変わる！ChatGPT活用・基本の仕事術【タスク管理・情報整理・アイデア発想・文章作成を効率化】",
+                image: "https://img-c.udemycdn.com/course/480x270/6568957_cc57_2.jpg",
+                price: "1,300円",
+                originalPrice: "19,800円",
+                code: "M202512",
+                link: "https://www.udemy.com/course/ai_smart_biz/"
+            },
+            {
+                id: 1,
+                title: "初心者向けCodex CLI バイブコーディング 基礎マスターコース",
+                image: "https://img-c.udemycdn.com/course/480x270/6764989_c93f_2.jpg",
+                price: "1,300円",
+                originalPrice: "14,800円",
+                code: "202512A",
+                link: "https://www.udemy.com/course/codex-cli/"
+            },
+            {
+                id: 2,
+                title: "Claude Codeで始める VibeCodingスタートガイド｜インストールからWebページ作成・アプリ開発体験まで",
+                image: "https://img-c.udemycdn.com/course/480x270/6722887_113e_3.jpg",
+                price: "1,300円",
+                originalPrice: "9,800円",
+                code: "M202512",
+                link: "https://www.udemy.com/course/claude-code-for-beginners/"
+            },
+            {
+                id: 4,
+                title: "【はじめてのDify】AIチャットボット開発へのファーストステップ",
+                image: "https://img-c.udemycdn.com/course/480x270/6424193_0c5a_4.jpg",
+                price: "1,300円",
+                originalPrice: "12,800円",
+                code: "M202512",
+                link: "https://www.udemy.com/course/dify-ai-chatbot/"
+            }
+        ];
+
+        // ==========================================
+        //  KINDLE BOOKS DATA
+        // ==========================================
+        const books = [
+            {
+                id: 2,
+                title: "１日１０分自由を増やす！はじめてのスマートホーム: SwitchBot × Alexa で叶える リモコンいらずの快適生活",
+                image: "img/kindle02.jpg",
+                price: "0円",
+                originalPrice: "499円",
+                link: "https://amzn.to/4oxSPgK"
+            },ｓ
+            {
+                id: 1,
+                title: "遊びのネタ切れ撃退！ChatGPTで乗り切る夏休み攻略本",
+                image: "img/kindle01.jpg",
+                price: "0円",
+                originalPrice: "499円",
+                link: "https://amzn.to/4penVeF"
+            }
+        ];
+
+        const container = document.getElementById('coupon-container');
+        const booksContainer = document.getElementById('books-container');
+
+        function generateCouponUrl(baseUrl, code) {
+            try {
+                const url = new URL(baseUrl);
+                if (url.pathname !== '/' && !url.pathname.endsWith('/') && !url.pathname.includes('.')) {
+                    url.pathname += '/';
+                }
+                url.searchParams.set('couponCode', code);
+                return url.toString();
+            } catch (e) {
+                return `${baseUrl}${baseUrl.includes('?') ? '&' : '?'}couponCode=${code}`;
+            }
+        }
+
+        coupons.forEach(coupon => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            const couponUrl = generateCouponUrl(coupon.link, coupon.code);
+
+            let priceHtml = '';
+            if (coupon.price) {
+                priceHtml = `<div class="price-area"><span class="current-price">${coupon.price}</span>`;
+                if (coupon.originalPrice) {
+                    priceHtml += `<span class="original-price">${coupon.originalPrice}</span>`;
+                }
+                priceHtml += `</div>`;
+            }
+
+            card.innerHTML = `
+                <div class="card-image-wrapper">
+                    <img src="${coupon.image}" alt="${coupon.title}" class="card-image">
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">${coupon.title}</h3>
+                    ${priceHtml}
+                    
+                    <a href="${couponUrl}" target="_blank" class="btn">
+                        特別価格で受講
+                    </a>
+
+                    <div class="coupon-box" onclick="copyToClipboard('${coupon.code}', this)">
+                        <span class="coupon-label">COUPON CODE</span>
+                        <div class="coupon-code">${coupon.code}</div>
+                        <div class="copy-feedback">COPIED!</div>
+                    </div>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+
+        // Render Kindle Books
+        books.forEach(book => {
+            const card = document.createElement('a');
+            card.href = book.link;
+            card.target = '_blank';
+            card.className = 'card';
+            card.style.textDecoration = 'none';
+            card.style.color = 'inherit';
+            card.style.display = 'flex';
+            card.style.flexDirection = 'column';
+            card.style.cursor = 'pointer';
+
+            card.innerHTML = `
+                <div class="card-image-wrapper">
+                    <img src="${book.image}" alt="${book.title}" class="card-image">
+                </div>
+            `;
+            booksContainer.appendChild(card);
+        });
+
+        function copyToClipboard(text, element) {
+            navigator.clipboard.writeText(text).then(() => {
+                const feedback = element.querySelector('.copy-feedback');
+                feedback.classList.add('show');
+                setTimeout(() => {
+                    feedback.classList.remove('show');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+
+</html>
