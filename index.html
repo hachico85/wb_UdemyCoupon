@@ -4,13 +4,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hachico's Udemy Courses & Books | ハチコのUdemyコース・書籍</title>
-    <meta name="description" content="Udemy講師ハチコ(Hachico)の公式ページ。Udemyコースと書籍で、AIや業務効率化など、あなたの学習をサポートします。">
+    <title>Hachico's Udemy Courses</title>
+    <meta name="description" content="ハチコのUdemyコース一覧。書籍のご紹介も！AIや業務効率化など、あなたの学習をサポートします。">
 
     <!-- OGP Settings -->
-    <meta property="og:title" content="Hachico's Udemy Courses & Books | ハチコのUdemyコース・書籍">
-    <meta property="og:description"
-        content="Udemy講師ハチコ(Hachico)の公式ページ。Udemyコースと書籍で、AIや業務効率化など、あなたの学習をサポートします。">
+    <meta property="og:title" content="Hachico's Udemy Courses | ハチコのUdemyコース">
+    <meta property="og:description" content="ハチコのUdemyコース一覧。書籍のご紹介も！AIや業務効率化など、あなたの学習をサポートします。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hachico-udemy.github.io/">
     <meta property="og:image" content="https://placehold.jp/1200x630.png">
@@ -109,12 +108,14 @@
         .brand-title {
             font-size: 4rem;
             font-weight: 900;
-            line-height: 1.1;
+            line-height: 1.3;
             margin-bottom: 2rem;
-            background: linear-gradient(135deg, #fff 0%, #a5f3fc 100%);
+            background: linear-gradient(to bottom, #00f2ff 0%, #ffffff 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            color: transparent;
             letter-spacing: -0.02em;
+            padding-bottom: 0.1em;
         }
 
         .welcome-text {
@@ -153,25 +154,91 @@
             font-weight: 700;
         }
 
+        /* Section Container */
+        main>.container>.section-header:first-of-type {
+            margin-top: -2rem;
+        }
+
+        main>.container>.section-header:nth-of-type(3) {
+            margin-top: 6rem;
+            padding-top: 4rem;
+        }
+
         /* Section Header */
         .section-header {
             margin-bottom: 3rem;
-            padding-top: 3rem;
+            padding-bottom: 1.2rem;
         }
 
         .section-header h2 {
-            font-size: 2rem;
+            font-size: 1.8rem;
             font-weight: 700;
+
             color: var(--text-primary);
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #fff 0%, #a5f3fc 100%);
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* Kindle Section Header - closer spacing */
+        main>.container>.section-header:nth-of-type(3) {
+            padding-bottom: 0.5rem;
+        }
+
+        main>.container>.section-header:nth-of-type(3) h2 {
+            margin-bottom: -0.5em;
+        }
+
+        /* Udemy Section */
+        main>.container>.section-header:first-of-type h2 {
+            background: linear-gradient(135deg, #00f2ff 0%, #a5f3fc 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
+        main>.container>.section-header:first-of-type {
+            border-bottom: 1px solid rgba(0, 242, 255, 0.2);
+            padding-bottom: 0.5rem;
+        }
+
+        main>.container>.section-header:first-of-type h2 {
+            margin-bottom: -0.5em;
+        }
+
+        /* Kindle Section */
+        main>.container>.section-header:nth-of-type(3) h2 {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        main>.container>.section-header:nth-of-type(3) {
+            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
         .section-subtitle {
             color: var(--text-secondary);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        /* Kindle Section Specific */
+        #books-container {
+            padding-bottom: 8rem;
+        }
+
+        #books-container .card {
+            border-color: rgba(255, 215, 0, 0.2);
+        }
+
+        #books-container .card:hover {
+            border-color: rgba(255, 215, 0, 0.6);
+            box-shadow:
+                0 0 20px rgba(255, 215, 0, 0.4),
+                0 0 40px rgba(255, 215, 0, 0.3),
+                0 0 60px rgba(255, 215, 0, 0.2),
+                0 0 80px rgba(255, 215, 0, 0.1),
+                0 20px 40px -10px rgba(0, 0, 0, 0.5),
+                inset 0 0 30px rgba(255, 215, 0, 0.05);
         }
 
         /* Grid */
@@ -180,10 +247,6 @@
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 2.5rem;
             padding-bottom: 2rem;
-        }
-
-        #books-container {
-            padding-bottom: 8rem;
         }
 
         /* Kindle Books Card Specific */
@@ -226,7 +289,7 @@
         .card:hover {
             transform: translateY(-8px) scale(1.02);
             border-color: rgba(0, 242, 255, 0.6);
-            box-shadow: 
+            box-shadow:
                 0 0 20px rgba(0, 242, 255, 0.4),
                 0 0 40px rgba(0, 242, 255, 0.3),
                 0 0 60px rgba(0, 242, 255, 0.2),
@@ -269,9 +332,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(180deg, 
-                transparent 0%, 
-                rgba(0, 242, 255, 0.1) 100%);
+            background: linear-gradient(180deg,
+                    transparent 0%,
+                    rgba(0, 242, 255, 0.1) 100%);
             pointer-events: none;
         }
 
@@ -327,7 +390,7 @@
         .coupon-box:hover {
             background: rgba(0, 242, 255, 0.08);
             border-color: var(--accent-cyan);
-            box-shadow: 
+            box-shadow:
                 0 0 10px rgba(0, 242, 255, 0.3),
                 0 0 20px rgba(0, 242, 255, 0.2),
                 inset 0 0 15px rgba(0, 242, 255, 0.05);
@@ -409,7 +472,7 @@
 
         .btn:hover {
             transform: translateY(-2px);
-            box-shadow: 
+            box-shadow:
                 0 0 15px rgba(0, 242, 255, 0.6),
                 0 0 30px rgba(0, 242, 255, 0.4),
                 0 0 45px rgba(0, 242, 255, 0.3);
@@ -449,10 +512,10 @@
 
         .footer-link:hover {
             color: var(--accent-cyan);
-            text-shadow: 
+            text-shadow:
                 0 0 10px rgba(0, 242, 255, 0.6),
                 0 0 20px rgba(0, 242, 255, 0.3);
-            box-shadow: 
+            box-shadow:
                 0 0 15px rgba(0, 242, 255, 0.3),
                 0 0 25px rgba(0, 242, 255, 0.2),
                 inset 0 0 10px rgba(0, 242, 255, 0.05);
@@ -489,8 +552,8 @@
     <header class="hero">
         <div class="container">
             <div class="hero-content">
-                <span class="brand-subtitle">OFFICIAL SITE</span>
-                <h1 class="brand-title">Hachico's <br>Udemy Courses<br>& Books</h1>
+                <span class="brand-subtitle">Hachico's Special Infomation</span>
+                <h1 class="brand-title">Udemyコースを特別価格で</h1>
 
                 <div class="welcome-text">
                     <p>
@@ -519,8 +582,7 @@
 
             <!-- Kindle Books Section -->
             <div class="section-header">
-                <h2>Kindle Books</h2>
-                <p class="section-subtitle">Kindle Unlimitedで0円で読めます</p>
+                <h2>Books <small>- Kindle Unlimitedなら0円</small></h2>
             </div>
             <div id="books-container" class="coupon-grid">
                 <!-- JS Injection -->
@@ -532,7 +594,8 @@
         <div class="container">
             <div class="footer-links">
                 <a href="https://x.com/ha_chi_co_3" target="_blank" class="footer-link">Twitter / X</a>
-                <a href="https://mag.hachico-ai.com/newsletter-sign-up" target="_blank" class="footer-link">Newsletter</a>
+                <a href="https://mag.hachico-ai.com/newsletter-sign-up" target="_blank"
+                    class="footer-link">Newsletter</a>
             </div>
             <p>&copy; 2025 Hachico. All Rights Reserved.</p>
         </div>
@@ -654,9 +717,9 @@
             },
             {
                 id: 3,
-                title: "AI×思考整理で仕事が変わる！ChatGPT活用・基本の仕事術【タスク管理・情報整理・アイデア発想・文章作成を効率化】",
+                title: "会社員のためのAI活用術！ChatGPT活用・基本の仕事術【タスク管理・情報整理・アイデア発想・文章作成を効率化】",
                 image: "https://img-c.udemycdn.com/course/480x270/6568957_cc57_2.jpg",
-                price: "1,300円",
+                price: "1,500円",
                 originalPrice: "19,800円",
                 code: "M202512",
                 link: "https://www.udemy.com/course/ai_smart_biz/"
