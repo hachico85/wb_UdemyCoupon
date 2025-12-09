@@ -447,30 +447,12 @@
             color: #fff;
             font-weight: 700;
             letter-spacing: 0.05em;
-            position: relative;
+            transition: all 0.3s ease;
         }
 
-        .copy-feedback {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: var(--accent-cyan);
-            color: #000;
-            padding: 8px 24px;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            opacity: 0;
-            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
-            pointer-events: none;
-            box-shadow: 0 0 20px var(--accent-glow), 0 4px 12px rgba(0, 0, 0, 0.3);
-            z-index: 10;
-            white-space: nowrap;
-        }
-
-        .copy-feedback.show {
-            opacity: 1;
+        .coupon-code.copied {
+            color: var(--accent-cyan);
+            text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
         }
 
         /* Button */
@@ -854,8 +836,7 @@
 
                     <div class="coupon-box" onclick="copyToClipboard('${coupon.code}', this)">
                         <span class="coupon-label">COUPON CODE</span>
-                        <div class="coupon-code">${coupon.code}</div>
-                        <div class="copy-feedback">COPIED!</div>
+                        <div class="coupon-code" data-code="${coupon.code}">${coupon.code}</div>
                     </div>
                 </div>
             `;
@@ -887,11 +868,18 @@
 
         function copyToClipboard(text, element) {
             navigator.clipboard.writeText(text).then(() => {
-                const feedback = element.querySelector('.copy-feedback');
-                feedback.classList.add('show');
+                const codeElement = element.querySelector('.coupon-code');
+                const originalCode = codeElement.getAttribute('data-code');
+
+                // Change text to COPIED! and add style
+                codeElement.textContent = 'COPIED!';
+                codeElement.classList.add('copied');
+
+                // Revert back after 1.5 seconds
                 setTimeout(() => {
-                    feedback.classList.remove('show');
-                }, 2000);
+                    codeElement.textContent = originalCode;
+                    codeElement.classList.remove('copied');
+                }, 1500);
             });
         }
     </script>
