@@ -12,8 +12,12 @@
     <meta property="og:description" content="ハチコのUdemyコース一覧。書籍のご紹介も！AIや業務効率化など、あなたの学習をサポートします。">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://hachico-udemy.github.io/">
-    <meta property="og:image" content="https://placehold.jp/1200x630.png">
+    <meta property="og:image" content="https://hachico-udemy.github.io/ogp-image.svg">
     <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" href="apple-touch-icon.svg">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -242,6 +246,32 @@
                 0 0 80px rgba(255, 215, 0, 0.1),
                 0 20px 40px -10px rgba(0, 0, 0, 0.5),
                 inset 0 0 30px rgba(255, 215, 0, 0.05);
+        }
+
+        /* Kindle Tooltip */
+        .kindle-tooltip {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.2rem 1rem;
+            background: rgba(10, 10, 20, 0.95);
+            border-top: 1px solid rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            color: #fff;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            text-align: center;
+            transform: translateY(100%);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+            z-index: 10;
+        }
+
+        .card:hover .kindle-tooltip {
+            transform: translateY(0);
+            opacity: 1;
         }
 
         /* Grid */
@@ -704,7 +734,7 @@
                 id: 6,
                 title: "ClaspとCodex CLIで始めるGASプログラミング入門｜ローカル環境で快適に開発しよう【初心者歓迎】",
                 image: "https://img-c.udemycdn.com/course/480x270/6909291_b3a3_3.jpg",
-                price: "1,300円",
+                price: "1,500円",
                 originalPrice: "9,800円",
                 code: "M202512",
                 link: "https://www.udemy.com/course/clasp-gas/"
@@ -713,7 +743,7 @@
                 id: 5,
                 title: "【ClaudeでGASプログラミング】Google Apps Scriptで明日の予定をLINEに通知しよう",
                 image: "https://img-c.udemycdn.com/course/480x270/6505779_30af_2.jpg",
-                price: "1,300円",
+                price: "1,800円",
                 originalPrice: "19,800円",
                 code: "M202512",
                 link: "https://www.udemy.com/course/claude-gas-line/"
@@ -731,7 +761,7 @@
                 id: 1,
                 title: "初心者向けCodex CLI バイブコーディング 基礎マスターコース",
                 image: "https://img-c.udemycdn.com/course/480x270/6764989_c93f_2.jpg",
-                price: "1,300円",
+                price: "1,500円",
                 originalPrice: "14,800円",
                 code: "202512A",
                 link: "https://www.udemy.com/course/codex-cli/"
@@ -740,7 +770,7 @@
                 id: 2,
                 title: "Claude Codeで始める VibeCodingスタートガイド｜インストールからWebページ作成・アプリ開発体験まで",
                 image: "https://img-c.udemycdn.com/course/480x270/6722887_113e_3.jpg",
-                price: "1,300円",
+                price: "1,500円",
                 originalPrice: "9,800円",
                 code: "M202512",
                 link: "https://www.udemy.com/course/claude-code-for-beginners/"
@@ -749,7 +779,7 @@
                 id: 4,
                 title: "【はじめてのDify】AIチャットボット開発へのファーストステップ",
                 image: "https://img-c.udemycdn.com/course/480x270/6424193_0c5a_4.jpg",
-                price: "1,300円",
+                price: "1,500円",
                 originalPrice: "12,800円",
                 code: "M202512",
                 link: "https://www.udemy.com/course/dify-ai-chatbot/"
@@ -845,6 +875,9 @@
             card.innerHTML = `
                 <div class="card-image-wrapper">
                     <img src="${book.image}" alt="${book.title}" class="card-image">
+                </div>
+                <div class="kindle-tooltip">
+                    ${book.title}
                 </div>
             `;
             booksContainer.appendChild(card);
