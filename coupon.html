@@ -455,6 +455,12 @@
             text-shadow: 0 0 10px rgba(0, 242, 255, 0.5);
         }
 
+        .coupon-code.hover-text {
+            font-size: 0.9rem;
+            font-family: var(--font-main);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
         /* Button */
         .btn {
             display: block;
@@ -834,7 +840,9 @@
                         特別価格で受講
                     </a>
 
-                    <div class="coupon-box" onclick="copyToClipboard('${coupon.code}', this)">
+                    <div class="coupon-box" onclick="copyToClipboard('${coupon.code}', this)"
+                        onmouseenter="handleMouseEnter(this)" 
+                        onmouseleave="handleMouseLeave(this)">
                         <span class="coupon-label">COUPON CODE</span>
                         <div class="coupon-code" data-code="${coupon.code}">${coupon.code}</div>
                     </div>
@@ -866,10 +874,30 @@
             booksContainer.appendChild(card);
         });
 
+        function handleMouseEnter(element) {
+            const codeElement = element.querySelector('.coupon-code');
+            if (codeElement.classList.contains('copied')) return;
+
+            codeElement.textContent = 'クリックでコピー';
+            codeElement.classList.add('hover-text');
+        }
+
+        function handleMouseLeave(element) {
+            const codeElement = element.querySelector('.coupon-code');
+            if (codeElement.classList.contains('copied')) return;
+
+            const originalCode = codeElement.getAttribute('data-code');
+            codeElement.textContent = originalCode;
+            codeElement.classList.remove('hover-text');
+        }
+
         function copyToClipboard(text, element) {
             navigator.clipboard.writeText(text).then(() => {
                 const codeElement = element.querySelector('.coupon-code');
                 const originalCode = codeElement.getAttribute('data-code');
+
+                // Reset hover state
+                codeElement.classList.remove('hover-text');
 
                 // Change text to COPIED! and add style
                 codeElement.textContent = 'COPIED!';
